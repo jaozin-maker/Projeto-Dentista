@@ -28,7 +28,7 @@ def login():
         cursor.close()
         return render_template('form.html')
 
-@app.route('/test', methods=['GET'])
+@app.route('/test', methods = ['GET'])
 def get_data_by_id():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM nome;")
@@ -37,5 +37,19 @@ def get_data_by_id():
     return jsonify(data)
 
 
+@app.route('/login', methods = ['POST', 'GET'])
+def index():
+    if request.method == 'GET':
+        return render_template('login.html')
+
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        senha = request.form['senha']
+
+    if usuario == "joaozinho@gmail.com" and senha == "89054210":
+        return render_template ('cadastro.html')
+
+    else:
+        return render_template ('login.html')
 
 app.run(host='localhost', port=5000)

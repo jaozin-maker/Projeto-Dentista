@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Banco de Dados MySQL</title>
+</head>
+<body>
+    <h1>Dados do Banco de Dados MySQL</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Coluna 1</th>
+            <th>Coluna 2</th>
+            <!-- Adicione mais colunas conforme necessário -->
+        </tr>
+        {% for row in dados %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <!-- Adicione mais colunas conforme necessário -->
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

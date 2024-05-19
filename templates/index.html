@@ -1,28 +1,28 @@
-
 <!DOCTYPE html>
-<html></html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados do Banco de Dados MySQL</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <h1>Dados do Banco de Dados MySQL</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Coluna 1</th>
-            <th>Coluna 2</th>
-            <!-- Adicione mais colunas conforme necessário -->
-        </tr>
-        {% for row in dados %}
-            <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <!-- Adicione mais colunas conforme necessário -->
-            </tr>
-        {% endfor %}
-    </table>
+    <h1>Clientes Cadastrados</h1> 
+    <div id="form_fundo" class="listaUsuarios">
+      <div id="form_frente" class="listaUsuarios">
+          {% if usuarios %}
+              {% for c in usuarios %}
+                  <ul>
+                      <li>NOME: {{c[0]}}</li><br>
+                      <li>CPF: {{c[1]}}</li>
+                      <li>DataNasc: {{c[2]}}</li>
+                      <li>Sexo: {{c[3]}}</li>
+                  </ul>
+              {% endfor %}
+          {% else %}
+          <h1>nao existe usuarios cadastrados</h1>
+          {% endif %}
+      </div>
+  </div>
 </body>
 </html>

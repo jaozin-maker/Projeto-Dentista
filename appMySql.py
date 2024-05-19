@@ -23,7 +23,7 @@ def login():
         sexo = request.form['sexo']
         cursor = mysql.connection.cursor()
         
-        cursor.execute(''' INSERT INTO nome VALUES(%s,%s,%s,%s)''',(nome,cpf,data_nascimento,sexo))
+        cursor.execute(''' INSERT INTO passientes VALUES(%s,%s,%s,%s)''',(nome,cpf,data_nascimento,sexo))
         mysql.connection.commit()
         cursor.close()
         return render_template('form.html')
@@ -32,9 +32,9 @@ def login():
 def get_data_by_id():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM nome;")
-    data = cur.fetchall()
+    usuarios = cur.fetchall()
     cur.close()
-    return jsonify(data)
+    return render_template("index.html",usuarios=usuarios)
 
 
 @app.route('/login', methods = ['POST', 'GET'])
@@ -51,5 +51,19 @@ def index():
 
     else:
         return render_template ('login.html')
+
+@app.route('/excluir', methods = ['POST', 'GET'])
+def excluir():
+    if request.method == 'GET':
+        return render_template('excluir.html')
+
+    if request.method == 'POST':
+        nome = request.form['nome']
+        cursor = mysql.connection.cursor()
+        cursor.execute(f"DELETE FROM nome WHERE nome = {nome};")
+        mysql.connection.commit()
+        cursor.close()
+        return render_template('excluir.html')
+
 
 app.run(host='localhost', port=5000)

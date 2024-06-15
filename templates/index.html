@@ -12,12 +12,14 @@
       <div id="form_frente" class="listaUsuarios">
           {% if usuarios %}
               {% for c in usuarios %}
+                <form action="/excluir" method="post">
                   <ul>
                       <li>NOME: {{c[0]}}</li><br>
                       <li>CPF: {{c[1]}}</li>
                       <li>DataNasc: {{c[2]}}</li>
                       <li>Sexo: {{c[3]}}</li>
                   </ul>
+                </form>
               {% endfor %}
           {% else %}
           <h1>nao existe usuarios cadastrados</h1>
